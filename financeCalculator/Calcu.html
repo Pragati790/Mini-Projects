@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Finance Calculator with Chart</title>
+    <link rel="stylesheet" href="Calcu.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Finance Calculator</h1>
+
+        <div class="tabs">
+            <button class="tab-button" onclick="openTab('emi')">EMI Calculator</button>
+            <button class="tab-button" onclick="openTab('simpleInterest')">Simple Interest</button>
+            <button class="tab-button" onclick="openTab('compoundInterest')">Compound Interest</button>
+        </div>
+
+        <!-- EMI Calculator -->
+        <div id="emi" class="tab-content">
+            <h2>EMI Calculator</h2>
+            <label for="loanAmount">Loan Amount (₹):</label>
+            <input type="number" id="loanAmount" placeholder="Enter Loan Amount">
+
+            <label for="interestRate">Annual Interest Rate (%):</label>
+            <input type="number" id="interestRate" placeholder="Enter Interest Rate">
+
+            <label for="loanTenure">Loan Tenure (Years):</label>
+            <input type="number" id="loanTenure" placeholder="Enter Loan Tenure">
+
+            <button onclick="calculateEMI()">Calculate EMI</button>
+            <div id="emiResult" class="result">Monthly EMI: ₹<span id="emiAmount">0</span></div>
+
+            <!-- Chart for Payment Breakdown -->
+            <div class="chart-container">
+                <canvas id="paymentChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Simple Interest Calculator -->
+        <div id="simpleInterest" class="tab-content" style="display:none;">
+            <h2>Simple Interest Calculator</h2>
+            <label for="principal">Principal Amount (₹):</label>
+            <input type="number" id="principal" placeholder="Enter Principal Amount">
+
+            <label for="rate">Annual Interest Rate (%):</label>
+            <input type="number" id="rate" placeholder="Enter Interest Rate">
+
+            <label for="time">Time Period (Years):</label>
+            <input type="number" id="time" placeholder="Enter Time Period">
+
+            <button onclick="calculateSimpleInterest()">Calculate Simple Interest</button>
+            <div id="siResult" class="result">Simple Interest: ₹<span id="siAmount">0</span></div>
+        </div>
+
+        <!-- Compound Interest Calculator -->
+        <div id="compoundInterest" class="tab-content" style="display:none;">
+            <h2>Compound Interest Calculator</h2>
+            <label for="cPrincipal">Principal Amount (₹):</label>
+            <input type="number" id="cPrincipal" placeholder="Enter Principal Amount">
+
+            <label for="cRate">Annual Interest Rate (%):</label>
+            <input type="number" id="cRate" placeholder="Enter Interest Rate">
+
+            <label for="cTime">Time Period (Years):</label>
+            <input type="number" id="cTime" placeholder="Enter Time Period">
+
+            <label for="frequency">Compounding Frequency:</label>
+            <select id="frequency">
+                <option value="1">Annually</option>
+                <option value="2">Semi-Annually</option>
+                <option value="4">Quarterly</option>
+                <option value="12">Monthly</option>
+            </select>
+
+            <button onclick="calculateCompoundInterest()">Calculate Compound Interest</button>
+            <div id="ciResult" class="result">Compound Interest: ₹<span id="ciAmount">0</span></div>
+        </div>
+    </div>
+
+    <script src="Calcu.js"></script>
+</body>
+</html>
